@@ -1,3 +1,5 @@
+import InputForm from "../components/InputForm"
+
 const { Box, Text } = require("@chakra-ui/react")
 
 const Home = () => {
@@ -6,6 +8,7 @@ const Home = () => {
             <Text>
                 Welcome Page
             </Text>
+            <InputForm/>
         </Box>
     )
 }

@@ -1,8 +1,12 @@
-import { Checkbox, FormControl, HStack, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from "@chakra-ui/react"
+import { Checkbox, Button, FormControl, HStack, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from "@chakra-ui/react"
 import { useState } from "react"
 
-const InputField = () => {
-    const[alwaysOn, setAlwaysOn] = useState(true)
+
+
+const InputField = (deviceName, deviceAlwaysOn, deviceHours, removeEnabled) => {
+    const[name, setName] = useState(deviceName)
+    const[alwaysOn, setAlwaysOn] = useState(deviceAlwaysOn)
+    const[hours, setHours] = useState(deviceHours)
     return(
         <FormControl>
         <HStack spacing='24px'>
@@ -22,7 +26,7 @@ const InputField = () => {
             <NumberIncrementStepper/>
             <NumberDecrementStepper/>
             </NumberInputStepper>
-        </NumberInput>} 
+        </NumberInput>}
         </HStack>
         </FormControl>
     )

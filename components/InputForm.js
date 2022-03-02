@@ -1,13 +1,14 @@
-import { Button, FormControl, HStack,NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select, Checkbox } from "@chakra-ui/react"
+import { Button, Text, Box, FormControl, HStack,NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select, Checkbox } from "@chakra-ui/react"
 import { setIn } from "formik"
 import { useState } from "react"
 import InputField from './InputField.js' 
-
+import {kwhavg, wattHours, kwattDays}  from '../lib/calc.js'
 
 
 
 const InputForm = () => {
     const [inputList, setInputList] = useState([{device:'Select Appliance',alwaysOn:true,hours:24,}])
+    const [data, setData] = useState(null)
 
     const handleInputChange = (e, index) => {
         const {name, value} = e.target;
@@ -18,7 +19,6 @@ const InputForm = () => {
         list[index][name] = value;
         }
         setInputList(list);
-        console.log(inputList);
     };
 
     const handleHourChange = (e, index) => {
@@ -26,7 +26,6 @@ const InputForm = () => {
         const list = [...inputList];
         list[index]['hours'] = value;
         setInputList(list);
-        console.log(inputList);
     }
     
     const handleRemoveClick = index => {
@@ -39,13 +38,24 @@ const InputForm = () => {
         setInputList([...inputList, {device:'Select Appliance',alwaysOn:true,hours:24}])
     };
 
+    const handleSubmit = () => {
+        let totalhours = 0;
+        for(let i = 0; i < inputList.length; i++)
+        {
+            totalhours = totalhours + wattHours(inputList[i])
+        } 
+        const days = kwattDays(totalhours)
+        setData(kwhavg(days));
+    }
+
     return(
-        
+        <>
         <FormControl>
         {inputList.map((x, i) => {
         return(
             <HStack key={i}>
             <FormControl>
+                
                 <HStack spacing='24px'>
                     <Select placeholder='Select Appliance' name="device" value={x.device} onChange={e => handleInputChange(e, i)}>
                         <option value='fridge'>Fridge</option>
@@ -82,7 +92,21 @@ const InputForm = () => {
         )})}
         <Button onClick={handleAddClick}>Add</Button>
         </FormControl>
-    )
+        <Button m={5} onClick={handleSubmit}>Submit</Button>
+        <Box>
+        {data ?
+         <>
+         <Text>
+             Kilowatt Days: {data.kwattdays}
+         </Text>
+         <Text>
+             {data.message}
+         </Text>
+         </> 
+         : <></>}
+        </Box>
+        </>
+        )
 }
 
 

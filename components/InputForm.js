@@ -6,6 +6,7 @@ const InputForm = () => {
             <Select placeholder='Select Appliance'>
                 <option value='Fridge'>Fridge</option>
                 <option value='Kettle'>Kettle</option>
+                <option value='Oven' > Oven</option>
             </Select>
         </FormControl>
     )

@@ -6,8 +6,8 @@ const Main = ({ children, router}) => {
         <Box as="main" pb={8}>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <title>Alexander Dauncey - Homepage</title>
-                <link rel="icon" type="image/x-icon" sizes="16x16" href="/favicons/favicon.ico" />
+                <title>Untitled sustainability project - Homepage</title>
+                <link rel="icon" type="image/x-icon" sizes="16x16" href= "public/uob logo.png" />
             </Head>
 
             <Container maxW="container.md" pt={14}>

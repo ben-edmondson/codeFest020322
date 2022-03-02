@@ -1,13 +1,12 @@
-const { FormControl, Select } = require("@chakra-ui/react")
+import { FormControl } from "@chakra-ui/react"
+import InputField from './InputField.js' 
+
 
 const InputForm = () => {
     return(
         <FormControl>
-            <Select placeholder='Select Appliance'>
-                <option value='Fridge'>Fridge</option>
-                <option value='Kettle'>Kettle</option>
-                <option value='Oven' > Oven</option>
-            </Select>
+            <InputField/>
+            <InputField/>
         </FormControl>
     )
 }

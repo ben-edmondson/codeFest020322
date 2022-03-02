@@ -48,9 +48,20 @@ const InputForm = () => {
             <FormControl>
                 <HStack spacing='24px'>
                     <Select placeholder='Select Appliance' name="device" value={x.device} onChange={e => handleInputChange(e, i)}>
-                        <option value='Fridge'>Fridge</option>
-                        <option value='Kettle'>Kettle</option>
-                        <option value='Oven' > Oven</option>
+                        <option value='fridge'>Fridge</option>
+                        <option value='coffee maker'>Coffee Maker</option>
+                        <option value='microwave'> Microwave</option>
+                        <option value='toaster'> Toaster</option>
+                        <option value='dishwasher'> Dishwasher</option>
+                        <option value='washer'> Washer</option>
+                        <option value='dryer'> Dryer</option>
+                        <option value='iron'> Iron</option>
+                        <option value='hair dryer'> Hair Dryer</option>
+                        <option value='laptop'> Laptop</option>
+                        <option value='monitor'> Monitor</option>
+                        <option value='computer'> Computer</option>
+                        <option value='small tv'> Small TV</option>
+                        <option value='big tv'> Big TV</option>
                     </Select>
                     <Checkbox defaultChecked name='alwaysOn' onChange={e => handleInputChange(e,i)}>
                         Always On?
